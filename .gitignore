@@ -1,2 +1,4 @@
 data
-data/*
+.sass-cache
+*.css.map
+notebooks/.ipynb_checkpoints
