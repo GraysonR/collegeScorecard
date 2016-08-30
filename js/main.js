@@ -1,4 +1,4 @@
-var svg = dimple.newSvg("#chartContainer", 590, 500);
+var svg = dimple.newSvg("#chartContainer", 700, 400);
 
 feature = "debt_mdn";
 d3.json("/data/scorecard_data.json", function (data) {
@@ -7,7 +7,7 @@ d3.json("/data/scorecard_data.json", function (data) {
   console.log(data);
 
   var myChart = new dimple.chart(svg, data);
-  myChart.setBounds(60, 30, 505, 305);
+  myChart.setBounds(60, 30, "100%,-120px", "100%,-100px");
 
   var x = myChart.addTimeAxis("x", "year", "%Y", "%Y");
   x.addOrderRule("year");
