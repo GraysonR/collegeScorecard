@@ -15,7 +15,7 @@ def clean(data, institutions):
         institutions -- list of schools that appear in 2013
 
     Returns:
-        json_data -- Dictionary with tree structure of data related to schools
+        final_json -- Dictionary with tree structure of data related to schools
     """
     json_data = {} # Inflation adjusted JSON structured tree about different institutions
 
@@ -45,7 +45,19 @@ def clean(data, institutions):
     avg = create_average_data(json_data)
     json_data['avg'] = avg
 
-    return json_data
+    final_json = {'Contains':'schools data', 'features':[]}
+
+    for school in json_data:
+        json_entry = {'school': school, 'data': []}
+        json_entry['school'] = school
+
+        for year in json_data[school]:
+            sub_entry = {'year': year, 'financial_data': json_data[school][year]}
+            json_entry['data'].append(sub_entry)
+
+        final_json['features'].append(json_entry)
+
+    return final_json
 
 def create_average_data(json_data):
     """

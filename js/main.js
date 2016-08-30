@@ -1,3 +1,7 @@
+$.getJSON("data/scorecard_data.json", function(json) {
+  console.log(json);
+});
+
 var svg = dimple.newSvg("#chartContainer", 590, 400);
 d3.json("/data/scorecard_data.json", function (data) {
   data = dimple.filterData(data, "School", ["avg"]);
