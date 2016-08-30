@@ -52,7 +52,7 @@ def clean(data, institutions):
         json_entry['school'] = school
 
         for year in json_data[school]:
-            sub_entry = {'year': year, 'financial_data': json_data[school][year]}
+            sub_entry = {'year': str(year), 'financial_data': json_data[school][year]}
             json_entry['data'].append(sub_entry)
 
         final_json['features'].append(json_entry)

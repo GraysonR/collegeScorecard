@@ -1,17 +1,24 @@
+html, body {
+  height: 100%; }
+
 article {
   padding-top: 25px; }
 
 .reference {
   margin-bottom: 0; }
 
-.content {
-  height: 2000px; }
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px; }
 
 .footer {
   text-align: center;
-  width: 100%;
-  bottom: 0;
-  position: absolute; }
+  width: 100%; }
+
+.footer, .push {
+  height: 30px; }
 
 #chartContainer svg {
   display: block;
