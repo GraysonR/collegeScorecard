@@ -1,6 +1,6 @@
 var svg = dimple.newSvg("#chartContainer", 700, 400);
 
-feature = "debt_mdn";
+feature = "tuition_out";
 d3.json("/data/scorecard_data.json", function (data) {
   data = dimple.filterData(data.features, "school", ["avg"]);
   data = flatten_data(data, feature);

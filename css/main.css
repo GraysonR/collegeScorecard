@@ -20,8 +20,17 @@ article {
 .footer, .push {
   height: 30px; }
 
-#chartContainer svg {
+.dropdown {
+  float: left;
   display: block;
-  margin: auto; }
+  width: 5%;
+  margin-top: 150px;
+  padding-left: 80px; }
+
+#chartContainer {
+  width: 90%; }
+  #chartContainer svg {
+    display: block;
+    margin: auto; }
 
 /*# sourceMappingURL=main.css.map */
