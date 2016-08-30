@@ -17,6 +17,7 @@ article {
   position: absolute;
 }
 
-#chartContainer {
-  text-align: center;
+#chartContainer svg {
+  display: block;
+  margin: auto;
 }

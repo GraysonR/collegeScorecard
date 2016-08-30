@@ -13,4 +13,8 @@ article {
   bottom: 0;
   position: absolute; }
 
+#chartContainer svg {
+  display: block;
+  margin: auto; }
+
 /*# sourceMappingURL=main.css.map */
