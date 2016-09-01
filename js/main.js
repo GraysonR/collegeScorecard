@@ -4,10 +4,18 @@ d3.json("/data/scorecard_data.json", function(all_data) {
   var all_schools = [];
   var myChart;
 
-  // Get all school names for fast searching
+  /*
+  * School searching.
+  */
   for (var i = 0; i < all_data.features.length; i++) {
     all_schools.push(all_data.features[i].school);
   }
+
+  $( function() {
+    $( ".school-search" ).autocomplete({
+      source: all_schools
+    });
+  } );
 
   /*
   * Transforms tree like JSON into a flat JSON for D3 to process.
@@ -41,6 +49,8 @@ d3.json("/data/scorecard_data.json", function(all_data) {
     return data;
   };
 
+
+
   /* ----------------------------------------------------------- */
   /* ---------------------Feature Selection--------------------- */
   /* ----------------------------------------------------------- */
@@ -66,12 +76,68 @@ d3.json("/data/scorecard_data.json", function(all_data) {
     lis[i].onclick = change_feature;
   }
 
-  // Schools selection
-  $( function() {
-    $( ".school-search" ).autocomplete({
-      source: all_schools
-    });
-  } );
+  /* ----------------------------------------------------------- */
+  /* ---------------------School Selection--------------------- */
+  /* ----------------------------------------------------------- */
+  var delete_school = function() {
+    var school_to_remove = this.parentElement;
+    var school_name = school_to_remove.textContent;
+
+    school_to_remove.parentElement.removeChild(school_to_remove);
+
+    var index = schools.indexOf(school_name);
+    schools.splice(index, 1);
+    myChart.data = filter_data();
+    myChart.draw(500);
+  };
+
+  var add_school = function() {
+    if (schools.length > 6) {
+      return;
+    }
+
+    var added_schools = document.getElementsByClassName("added-school");
+    var search_value = document.getElementsByClassName("school-search")[0].value;
+
+    // Checks to see if the school exists
+    for (i = 0; i < all_schools.length; i++) {
+      if (all_schools[i] === search_value) {
+        break;
+      }
+    }
+    if (i === all_schools.length) {
+      return;
+    }
+
+    // See if school is already in the list
+    for (i = 0; i < added_schools.length; i++) {
+      if (added_schools[i].text == search_value) {
+        return;
+      }
+    }
+
+    // Add school to the chart
+    schools.push(search_value);
+    myChart.data = filter_data();
+    myChart.draw(500);
+
+    // Add school to the list of schools shown
+    var delete_button = document.createElement("button");
+    delete_button.setAttribute("class", "btn btn-default remove-school-button");
+    var minus_sign = document.createElement("span");
+    minus_sign.setAttribute("class", "glyphicon glyphicon-minus");
+    delete_button.appendChild(minus_sign);
+    delete_button.onclick = delete_school;
+
+    var new_school = document.createElement("ul");
+    new_school.setAttribute("class", "list-group-item");
+    new_school.innerHTML = search_value;
+    new_school.appendChild(delete_button);
+
+    document.getElementsByClassName("list-group")[0].appendChild(new_school);
+  };
+
+  document.getElementsByClassName("add-school-button")[0].onclick = add_school;
 
   /* ----------------------------------------------------------- */
   /* ----------------------Visualization------------------------ */
