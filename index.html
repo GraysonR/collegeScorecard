@@ -7,6 +7,7 @@
     <title>College Scorecard</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/main.css">
 
     <!--[if lt IE 9]>
@@ -23,28 +24,32 @@
           <p class="muted reference">Publish date - Updated:</p>
         </header>
         <article class="col-md-12">
-          <section>
-            <h3>
-              Introduction
-            </h3>
-            <p>
-              Words go here and they say stuff like, "Hey, I'm a word!".
-            </p>
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Median Debt
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li id="tuition_in" class="feature-option"><a href="#">Tuition In-State</a></li>
-                <li id="tuition_out" class="feature-option"><a href="#">Tuition Out-of-State</a></li>
-                <li id="debt_mdn" class="feature-option"><a href="#">Median Debt</a></li>
-                <li id="mn_earn" class="feature-option"><a href="#">Average Income</a></li>
-                <li id="md_earn" class="feature-option"><a href="#">Median Income</a></li>
-              </ul>
+          <div class="dropdown feature-selector">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Median Debt
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li id="tuition_in" class="feature-option"><a href="#">Tuition In-State</a></li>
+              <li id="tuition_out" class="feature-option"><a href="#">Tuition Out-of-State</a></li>
+              <li id="debt_mdn" class="feature-option"><a href="#">Median Debt</a></li>
+              <li id="mn_earn" class="feature-option"><a href="#">Average Income</a></li>
+              <li id="md_earn" class="feature-option"><a href="#">Median Income</a></li>
+            </ul>
+          </div>
+          <div id="chartContainer"></div>
+          <div class="feature-selector">
+            <ul class="list-group">
+              <li class="list-group-item">National Average</li>
+            </ul>
+            <div class="input-group">
+
+              <input type="text" class="form-control school-search" placeholder="Search for a school">
+              <span class="input-group-btn">
+                <button class="btn btn-default school-button" type="button">Add</button>
+              </span>
             </div>
-            <div id="chartContainer"></div>
-          </section>
+          </div>
         </article>
       </div>
       <div class="push"></div>
@@ -59,6 +64,7 @@
       </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>

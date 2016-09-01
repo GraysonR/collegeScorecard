@@ -60,10 +60,18 @@ d3.json("/data/scorecard_data.json", function(all_data) {
     myChart.draw(500);
   };
 
+  // Data features to search on
   var lis = document.getElementsByClassName("feature-option");
   for (i = 0; i < lis.length; i++) {
     lis[i].onclick = change_feature;
   }
+
+  // Schools selection
+  $( function() {
+    $( ".school-search" ).autocomplete({
+      source: all_schools
+    });
+  } );
 
   /* ----------------------------------------------------------- */
   /* ----------------------Visualization------------------------ */
@@ -79,7 +87,7 @@ d3.json("/data/scorecard_data.json", function(all_data) {
   var y = myChart.addMeasureAxis("y", feature);
   y.overrideMin = 0;
 
-  var s = myChart.addSeries(schools, dimple.plot.line);
+  var s = myChart.addSeries("school", dimple.plot.line);
   s.lineMarkers = true;
 
   myChart.draw();

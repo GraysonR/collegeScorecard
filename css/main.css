@@ -20,10 +20,11 @@ article {
 .footer, .push {
   height: 30px; }
 
-.dropdown {
+.feature-selector {
   float: left;
-  display: block;
-  width: 5%;
+  display: block; }
+
+.dropdown {
   margin-top: 150px;
   padding-left: 30px; }
 
