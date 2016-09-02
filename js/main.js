@@ -110,8 +110,8 @@ d3.json("/data/scorecard_data.json", function(all_data) {
     }
 
     // See if school is already in the list
-    for (i = 0; i < added_schools.length; i++) {
-      if (added_schools[i].text == search_value) {
+    for (i = 0; i < schools.length; i++) {
+      if (schools[i] == search_value) {
         return;
       }
     }
