@@ -1,6 +1,6 @@
 d3.json("/data/scorecard_data.json", function(all_data) {
   var feature = "debt_mdn"; // Default feature
-  var schools = ["avg"];
+  var schools = ["National Average"];
   var all_schools = [];
   var myChart;
 

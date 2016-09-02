@@ -34,16 +34,16 @@ def clean(data, institutions):
             set_value(financial_data, 'debt_mdn', row[4], year)
             set_value(financial_data, 'mn_earn', row[5], year)
             set_value(financial_data, 'md_earn', row[6], year)
-            set_value(financial_data, 'md_earn_10', row[7], year)
+            """set_value(financial_data, 'md_earn_10', row[7], year)
             set_value(financial_data, 'md_earn_25', row[8], year)
             set_value(financial_data, 'md_earn_75', row[9], year)
-            set_value(financial_data, 'md_earn_90', row[10], year)
+            set_value(financial_data, 'md_earn_90', row[10], year)"""
 
             if len(financial_data) != 0:
                 json_data[instnm][year] = financial_data
 
     avg = create_average_data(json_data)
-    json_data['avg'] = avg
+    json_data['National Average'] = avg
 
     final_json = {'Contains':'schools data', 'features':[]}
 
@@ -71,7 +71,10 @@ def create_average_data(json_data):
     counts = {}
 
     for school in json_data:
+
         for year in json_data[school]:
+            if year < 2005:
+                continue
             if year not in avg:
                 avg[year] = json_data[school][year]
                 counts[year] = {}
