@@ -135,6 +135,7 @@ d3.json("/data/scorecard_data.json", function(all_data) {
     new_school.appendChild(delete_button);
 
     document.getElementsByClassName("list-group")[0].appendChild(new_school);
+    document.getElementsByClassName("school-search")[0].value = "";
   };
 
   document.getElementsByClassName("add-school-button")[0].onclick = add_school;
