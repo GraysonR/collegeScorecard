@@ -139,6 +139,12 @@ d3.json("/data/scorecard_data.json", function(all_data) {
   };
 
   document.getElementsByClassName("add-school-button")[0].onclick = add_school;
+  $(".school-search").keyup(function(event){
+    // Enter button hit
+    if(event.keyCode == 13){
+      add_school();
+    }
+  });
 
   /* ----------------------------------------------------------- */
   /* ----------------------Visualization------------------------ */
