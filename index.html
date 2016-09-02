@@ -19,9 +19,10 @@
     <div class="wrapper">
       <div class="container">
         <header class="col-md-12">
-          <h2>College Scorecard Visualization</h2>
-          <p class="muted reference">Grayson Ricketts</p>
-          <p class="muted reference">Publish date - Updated:</p>
+          <h1>College Scorecard</h1>
+          <p class="lead">
+            See how the national average for student's graduating debt, income, and other financial data related to college has changed over time. Then, compare different schools against each other and the national average.
+          </p>
         </header>
         <article class="col-md-12">
           <div class="dropdown feature-selector">
@@ -38,25 +39,31 @@
             </ul>
           </div>
           <div id="chartContainer"></div>
+        </article>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <div class="input-group">
+            <input type="text" class="form-control school-search" placeholder="Search for a school">
+            <span class="input-group-btn">
+              <button class="btn btn-default add-school-button" type="button">Add</button>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-5">
           <div class="feature-selector">
             <ul class="list-group">
               <li class="list-group-item">National Average</li>
             </ul>
-            <div class="input-group">
-              <input type="text" class="form-control school-search" placeholder="Search for a school">
-              <span class="input-group-btn">
-                <button class="btn btn-default add-school-button" type="button">Add</button>
-              </span>
-            </div>
           </div>
-        </article>
+        </div>
+        <div class="col-md-1"></div>
       </div>
       <div class="push"></div>
     </div>
 
     <footer class="nav-bar-fixed-bottom footer">
       <div class="container">
-        <p>© <a href="https://github.com/GraysonR">Grayson Ricketts </a><script type="text/javascript">
+        <p>© <a href="https://github.com/GraysonRicketts">Grayson Ricketts </a><script type="text/javascript">
           var today = new Date();
           document.write(today.getFullYear());
         </script></p>

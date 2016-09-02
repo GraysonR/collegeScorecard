@@ -1,3 +1,9 @@
+/* ------------------------- *
+ * ---------MAIN.CSS-------- *
+ * ------------------------- */
+
+/* General formatting */
+
 html, body {
   height: 100%;
 }
@@ -6,8 +12,8 @@ article {
   padding-top: 25px;
 }
 
-.reference {
-  margin-bottom: 0;
+h1 {
+  text-align: center;
 }
 
 .wrapper {
@@ -17,6 +23,15 @@ article {
   margin: 0 auto -30px;
 }
 
+/* Sub title text */
+
+.lead {
+  padding-top: 30px;
+  text-align: center;
+}
+
+/* Footer */
+
 .footer {
   text-align: center;
   width: 100%;
@@ -25,6 +40,8 @@ article {
 .footer, .push {
   height: 30px;
 }
+
+/* Selecting features and schools for visualization */
 
 .feature-selector {
   float: left;
@@ -36,8 +53,18 @@ article {
   padding-left: 30px;
 }
 
+.remove-school-button {
+  font-size: 11px;
+  margin-left: 25px;
+  margin-right: 0;
+  top: -4px;
+  float: right;
+  position: relative;
+}
+
+/* Visualization */
+
 #chartContainer {
-  width: 90%;
   svg {
     display: block;
     margin: auto;

@@ -143,10 +143,10 @@ d3.json("/data/scorecard_data.json", function(all_data) {
   /* ----------------------------------------------------------- */
   /* ----------------------Visualization------------------------ */
   /* ----------------------------------------------------------- */
-  var svg = dimple.newSvg("#chartContainer", 700, 400);
+  var svg = dimple.newSvg("#chartContainer", 880, 400);
 
   myChart = new dimple.chart(svg, filter_data());
-  myChart.setBounds(60, 30, "100%,-120px", "100%,-100px");
+  myChart.setBounds(60, 30, "100%,-300px", "100%,-100px");
 
   var x = myChart.addTimeAxis("x", "year", "%Y", "%Y");
   x.addOrderRule("year");
@@ -157,5 +157,9 @@ d3.json("/data/scorecard_data.json", function(all_data) {
   var s = myChart.addSeries("school", dimple.plot.line);
   s.lineMarkers = true;
 
+  myChart.addLegend(675, 100, 100, 75, "left", [s]);
+
   myChart.draw();
+
+  myLegend.shapes.selectAll("rect").on("click", delete_school);
 });

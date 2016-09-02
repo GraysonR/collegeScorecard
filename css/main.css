@@ -1,11 +1,15 @@
+/* ------------------------- *
+ * ---------MAIN.CSS-------- *
+ * ------------------------- */
+/* General formatting */
 html, body {
   height: 100%; }
 
 article {
   padding-top: 25px; }
 
-.reference {
-  margin-bottom: 0; }
+h1 {
+  text-align: center; }
 
 .wrapper {
   min-height: 100%;
@@ -13,6 +17,12 @@ article {
   height: 100%;
   margin: 0 auto -30px; }
 
+/* Sub title text */
+.lead {
+  padding-top: 30px;
+  text-align: center; }
+
+/* Footer */
 .footer {
   text-align: center;
   width: 100%; }
@@ -20,6 +30,7 @@ article {
 .footer, .push {
   height: 30px; }
 
+/* Selecting features and schools for visualization */
 .feature-selector {
   float: left;
   display: block; }
@@ -28,10 +39,17 @@ article {
   margin-top: 150px;
   padding-left: 30px; }
 
-#chartContainer {
-  width: 90%; }
-  #chartContainer svg {
-    display: block;
-    margin: auto; }
+.remove-school-button {
+  font-size: 11px;
+  margin-left: 25px;
+  margin-right: 0;
+  top: -4px;
+  float: right;
+  position: relative; }
+
+/* Visualization */
+#chartContainer svg {
+  display: block;
+  margin: auto; }
 
 /*# sourceMappingURL=main.css.map */
