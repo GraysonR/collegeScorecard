@@ -23,6 +23,9 @@ The legend will be either above the graphic or to the right, and the text color 
 * Have the feature dropdown widths be the same - IMPLEMENTED
 
 ### Bo
+* Lots of blank space below. Always goes to 0 which leaves a lot of unused space - NOT IMPLEMENTED - The white space allows for a steady baseline. By adjusting the range of Y the data may become misleading. For instance, if the range of y is 20k - 25k and on school has a value at 21k and the other at 24k. Then, the one at 24k seems much higher but in reality they are fairly close.
+* Didn't know I could hover until (Grayson) told me. - NOT IMPLEMENTED - Tried adding another subtitle, but it didn't look right. Might add if more people can't find out about functionality.
+* Have more detailed numbers when I hover - IMPLEMENTED - Changed the tooltip.
 
 ## Data Source
 The dataset is available from <a href="https://www.kaggle.com">Kaggle</a>. For my project I used Version 1, specifically the dataset from 09-2015. https://www.kaggle.com/kaggle/college-scorecard
