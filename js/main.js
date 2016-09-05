@@ -179,11 +179,14 @@ d3.json("data/scorecard_data.json", function(all_data) {
   var s = myChart.addSeries("school", dimple.plot.line);
   s.lineMarkers = true;
   var format_year = d3.time.format("%Y");
+  var format_value = function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   s.getTooltipText = function (e) {
                           return [
                               "School: " + e.aggField[0],
                               "Year: " + format_year(new Date(e.x)),
-                              "Value: $" + e.yValueList[0]
+                              "Value: $" + format_value(e.yValueList[0])
                           ];
                       };
 
