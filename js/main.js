@@ -134,7 +134,20 @@ d3.json("data/scorecard_data.json", function(all_data) {
     new_school.innerHTML = search_value;
     new_school.appendChild(delete_button);
 
-    document.getElementsByClassName("list-group")[0].appendChild(new_school);
+
+    var list_group = document.getElementsByClassName("list-group")[0];
+
+    // All schools removed so have to recreate the ul
+    if (!list_group) {
+      var ul = document.createElement("ul");
+      ul.setAttribute("class", "list-group");
+      ul.appendChild(new_school);
+      document.getElementsByClassName("feature-selector")[1].appendChild(ul);
+    }
+    else {
+      list_group.appendChild(new_school);
+    }
+
     document.getElementsByClassName("school-search")[0].value = "";
   };
 
@@ -145,6 +158,9 @@ d3.json("data/scorecard_data.json", function(all_data) {
       add_school();
     }
   });
+
+  // Add delete button functionality to national average
+  document.getElementsByClassName("list-group-item")[0].onclick = delete_school;
 
   /* ----------------------------------------------------------- */
   /* ----------------------Visualization------------------------ */
