@@ -1,8 +1,8 @@
 # College Scorecard Exploration and Visualization
-An exploration and visualization of the data from the US Department of Education's College Scorecard dataset. See each year's average student graduating debt and tuition increase from 2005 to 2013, and then see their average income decrease from 2007 to 2011. Finally, compare schools of your choice against the national average and other schools.
+An exploration and visualization of the data from the US Department of Education's College Scorecard dataset.
 
 ## Summary
-Show how different financial aspects (i.e., cost, income after school, debt at graduation) of college have changed over the last 30 years. Compare schools to the national average and other schools.
+See each year's average student graduating debt and tuition increase from 2005 to 2013, and then see their average income decrease from 2007 to 2011. Finally, compare schools of your choice against the national average and other schools.
 
 ## Initial Design Decisions (8-26-2016)
 Show a time series of the cost, outcomes, and graduating debt of students using positional encoding. Each data point will be able to be hovered over to get the exact value at a point in time.
