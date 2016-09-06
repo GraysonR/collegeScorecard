@@ -23,47 +23,57 @@
           <p class="lead">
             See each year's average student graduating debt and tuition increase from 2005 to 2013, and then see their average income decrease from 2007 to 2011. Finally, compare schools of your choice against the national average and other schools.
           </p>
+          <hr>
         </header>
+        <div class="col-md-12">
+          <div class="col-md-4"></div>
+          <button class="col-md-2 btn btn-default chart-type active" type="button">National Average</button>
+          <button class="col-md-2 btn btn-default chart-type" type="button">Compare Schools</button>
+          <div class="col-md-4"></div>
+        </div>
         <article class="col-md-12">
           <div id="explantoryChart"></div>
         </article>
-        <article class="col-md-12">
-          <div class="dropdown feature-selector">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Median Debt
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li id="tuition_in" class="feature-option"><a href="#">Tuition In-State</a></li>
-              <li id="tuition_out" class="feature-option"><a href="#">Tuition Out-of-State</a></li>
-              <li id="debt_mdn" class="feature-option"><a href="#">Median Debt</a></li>
-              <li id="mn_earn" class="feature-option"><a href="#">Average Income</a></li>
-            </ul>
+        <div id="exploratoryChart">
+          <article class="col-md-12">
+            <div class="dropdown feature-selector">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Median Debt
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li id="tuition_in" class="feature-option"><a href="#">Tuition In-State</a></li>
+                <li id="tuition_out" class="feature-option"><a href="#">Tuition Out-of-State</a></li>
+                <li id="debt_mdn" class="feature-option"><a href="#">Median Debt</a></li>
+                <li id="mn_earn" class="feature-option"><a href="#">Average Income</a></li>
+              </ul>
+            </div>
+            <div id="chartContainer"></div>
+
+          </article>
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <div class="input-group">
+              <input type="text" class="form-control school-search" placeholder="Search for a school">
+              <span class="input-group-btn">
+                <button class="btn btn-default add-school-button" type="button">Add</button>
+              </span>
+            </div>
           </div>
-          <div id="chartContainer"></div>
-        </article>
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-          <div class="input-group">
-            <input type="text" class="form-control school-search" placeholder="Search for a school">
-            <span class="input-group-btn">
-              <button class="btn btn-default add-school-button" type="button">Add</button>
-            </span>
+          <div class="col-md-5">
+            <div class="feature-selector">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  National Average
+                  <button class="btn btn-default remove-school-button">
+                    <span class="glyphicon glyphicon-minus"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
+          <div class="col-md-1"></div>
         </div>
-        <div class="col-md-5">
-          <div class="feature-selector">
-            <ul class="list-group">
-              <li class="list-group-item">
-                National Average
-                <button class="btn btn-default remove-school-button">
-                  <span class="glyphicon glyphicon-minus"></span>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-1"></div>
       </div>
       <div class="push"></div>
     </div>

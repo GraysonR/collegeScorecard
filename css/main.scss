@@ -12,8 +12,12 @@ article {
   padding-top: 25px;
 }
 
-h1 {
+h1, h3 {
   text-align: center;
+}
+
+h3 {
+  margin-top: 0;
 }
 
 .wrapper {
@@ -72,7 +76,19 @@ h1 {
 
 /* Visualization */
 
-svg {
+.chart-type {
+  margin-left: 10px;
+}
+
+#chartContrainer svg {
   display: block;
   margin: auto;
+}
+
+#explantoryChart svg {
+  margin-left: 128px;
+}
+
+#exploratoryChart {
+  display: none;
 }

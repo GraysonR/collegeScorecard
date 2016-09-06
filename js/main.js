@@ -22,15 +22,21 @@ d3.json("data/scorecard_data.json", function(all_data) {
   */
   var average_data = function() {
     var avg_data = dimple.filterData(all_data.features, "school", ["National Average"]);
+    var key_converter = {
+              "tuition_in": "Tuition In-State",
+              "tuition_out": "Tuition Out-Of-State",
+              "mn_earn": "Average Earnings",
+              "md_earn": "Median Earnings",
+              "debt_mdn": "Average Debt"
+            };
     var new_avg_data = [];
 
     for (var i in avg_data[0].data) {
-      console.log(avg_data[0].data);
       for (var j in avg_data[0].data[i].financial_data) {
         var new_entry = {};
         new_entry.year = avg_data[0].data[i].year;
-        new_entry.value = avg_data[0].data[i].financial_data[j];
-        new_entry.type = j;
+        new_entry.Dollars = avg_data[0].data[i].financial_data[j];
+        new_entry.type = key_converter[j];
         new_avg_data.push(new_entry);
       }
     }
@@ -69,6 +75,37 @@ d3.json("data/scorecard_data.json", function(all_data) {
 
     return data;
   };
+
+  /* ----------------------------------------------------------- */
+  /* -----------------------Chart Selection--------------------- */
+  /* ----------------------------------------------------------- */
+
+  var chart_selector = function() {
+    var buttons = document.getElementsByClassName("chart-type");
+
+    // Activate National Average
+    if (this === buttons[0]) {
+      buttons[0].setAttribute("class", "col-md-2 btn btn-default chart-type active");
+      buttons[1].setAttribute("class", "col-md-2 btn btn-default chart-type");
+
+      document.getElementById("explantoryChart").style = "display: block";
+      document.getElementById("exploratoryChart").style = "display: none";
+    }
+    if (this === buttons[1]) {
+      buttons[0].setAttribute("class", "col-md-2 btn btn-default chart-type");
+      buttons[1].setAttribute("class", "col-md-2 btn btn-default chart-type active");
+
+      document.getElementById("explantoryChart").style = "display: none";
+      document.getElementById("exploratoryChart").style = "display: block";
+    }
+  };
+
+  var buttons = document.getElementsByClassName("chart-type");
+  for (var button in buttons) {
+    buttons[button].onclick = chart_selector;
+  }
+
+
 
 
 
@@ -186,12 +223,12 @@ d3.json("data/scorecard_data.json", function(all_data) {
   /* ----------------------------------------------------------- */
   /* ----------------------Visualization------------------------ */
   /* ----------------------------------------------------------- */
-  var explantoryexploratorySvg = dimple.newSvg("#explantoryChart", 880, 400);
+  var explantoryexploratorySvg = dimple.newSvg("#explantoryChart", 920, 500);
   var explanatoryChart = new dimple.chart(explantoryexploratorySvg, average_data());
-  explanatoryChart.setBounds(60, 30, "100%,-150px", "100%,-75px");
+  explanatoryChart.setBounds(60, 30, "100%,-190px", "100%,-75px");
   var ex = explanatoryChart.addTimeAxis("x", "year", "%Y", "%Y");
   ex.addOrderRule("year");
-  var ey = explanatoryChart.addMeasureAxis("y", "value");
+  var ey = explanatoryChart.addMeasureAxis("y", "Dollars");
   ey.overrideMin = 0;
   var es = explanatoryChart.addSeries("type", dimple.plot.line);
   es.lineMarkers = true;
