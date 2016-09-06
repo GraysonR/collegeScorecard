@@ -5,7 +5,7 @@ d3.json("data/scorecard_data.json", function(all_data) {
   var myChart;
 
   /*
-  * School searching.
+  * List to make school searching faster.
   */
   for (var i = 0; i < all_data.features.length; i++) {
     all_schools.push(all_data.features[i].school);
@@ -15,7 +15,28 @@ d3.json("data/scorecard_data.json", function(all_data) {
     $( ".school-search" ).autocomplete({
       source: all_schools
     });
-  } );
+  });
+
+  /*
+  * Data to show multiple financial values at the same time.
+  */
+  var average_data = function() {
+    var avg_data = dimple.filterData(all_data.features, "school", ["National Average"]);
+    var new_avg_data = [];
+
+    for (var i in avg_data[0].data) {
+      console.log(avg_data[0].data);
+      for (var j in avg_data[0].data[i].financial_data) {
+        var new_entry = {};
+        new_entry.year = avg_data[0].data[i].year;
+        new_entry.value = avg_data[0].data[i].financial_data[j];
+        new_entry.type = j;
+        new_avg_data.push(new_entry);
+      }
+    }
+
+    return new_avg_data;
+  };
 
   /*
   * Transforms tree like JSON into a flat JSON for D3 to process.
@@ -26,7 +47,7 @@ d3.json("data/scorecard_data.json", function(all_data) {
      for (var i in data) {
        for(var j in data[i].data) {
          if ((data[i].data[j].financial_data)[feature]) {
-           new_line = {}; // flat JSON
+           var new_line = {}; // flat JSON
            new_line.year = data[i].data[j].year;
            new_line.school = data[i].school;
            new_line[feature] = (data[i].data[j].financial_data)[feature];
@@ -165,17 +186,25 @@ d3.json("data/scorecard_data.json", function(all_data) {
   /* ----------------------------------------------------------- */
   /* ----------------------Visualization------------------------ */
   /* ----------------------------------------------------------- */
-  var svg = dimple.newSvg("#chartContainer", 880, 400);
+  var explantoryexploratorySvg = dimple.newSvg("#explantoryChart", 880, 400);
+  var explanatoryChart = new dimple.chart(explantoryexploratorySvg, average_data());
+  explanatoryChart.setBounds(60, 30, "100%,-150px", "100%,-75px");
+  var ex = explanatoryChart.addTimeAxis("x", "year", "%Y", "%Y");
+  ex.addOrderRule("year");
+  var ey = explanatoryChart.addMeasureAxis("y", "value");
+  ey.overrideMin = 0;
+  var es = explanatoryChart.addSeries("type", dimple.plot.line);
+  es.lineMarkers = true;
+  explanatoryChart.addLegend(800, 150, 100, 75, "left", [es]);
+  explanatoryChart.draw();
 
-  myChart = new dimple.chart(svg, filter_data());
+  var exploratorySvg = dimple.newSvg("#chartContainer", 880, 400);
+  myChart = new dimple.chart(exploratorySvg, filter_data());
   myChart.setBounds(60, 30, "100%,-300px", "100%,-100px");
-
   var x = myChart.addTimeAxis("x", "year", "%Y", "%Y");
   x.addOrderRule("year");
-
   var y = myChart.addMeasureAxis("y", feature);
   y.overrideMin = 0;
-
   var s = myChart.addSeries("school", dimple.plot.line);
   s.lineMarkers = true;
   var format_year = d3.time.format("%Y");
@@ -189,12 +218,6 @@ d3.json("data/scorecard_data.json", function(all_data) {
                               "Value: $" + format_value(e.yValueList[0])
                           ];
                       };
-
   myChart.addLegend(675, 100, 100, 75, "left", [s]);
-
-
-
   myChart.draw();
-
-  myLegend.shapes.selectAll("rect").on("click", delete_school);
 });

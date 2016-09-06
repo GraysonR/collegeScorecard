@@ -54,7 +54,7 @@ h1 {
   position: relative; }
 
 /* Visualization */
-#chartContainer svg {
+svg {
   display: block;
   margin: auto; }
 
