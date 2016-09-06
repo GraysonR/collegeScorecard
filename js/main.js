@@ -97,6 +97,7 @@ d3.json("data/scorecard_data.json", function(all_data) {
 
       document.getElementById("explantoryChart").style = "display: none";
       document.getElementById("exploratoryChart").style = "display: block";
+      myChart.draw();
     }
   };
 
@@ -104,10 +105,6 @@ d3.json("data/scorecard_data.json", function(all_data) {
   for (var button in buttons) {
     buttons[button].onclick = chart_selector;
   }
-
-
-
-
 
   /* ----------------------------------------------------------- */
   /* ---------------------Feature Selection--------------------- */
