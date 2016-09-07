@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>College Scorecard</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/first-main.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <header class="col-md-12">
+          <h1>College Scorecard</h1>
+          <p class="lead">
+            See each year's average student graduating debt and tuition increase from 2005 to 2013, and then see their average income decrease from 2007 to 2011. Finally, compare schools of your choice against the national average and other schools.
+          </p>
+        </header>
+        <article class="col-md-12">
+          <div class="dropdown feature-selector">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Median Debt
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li id="tuition_in" class="feature-option"><a href="#">Tuition In-State</a></li>
+              <li id="tuition_out" class="feature-option"><a href="#">Tuition Out-of-State</a></li>
+              <li id="debt_mdn" class="feature-option"><a href="#">Median Debt</a></li>
+              <li id="mn_earn" class="feature-option"><a href="#">Average Income</a></li>
+            </ul>
+          </div>
+          <div id="chartContainer"></div>
+        </article>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <div class="input-group">
+            <input type="text" class="form-control school-search" placeholder="Search for a school">
+            <span class="input-group-btn">
+              <button class="btn btn-default add-school-button" type="button">Add</button>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="feature-selector">
+            <ul class="list-group">
+              <li class="list-group-item">
+                National Average
+                <button class="btn btn-default remove-school-button">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <div class="push"></div>
+    </div>
+
+    <footer class="nav-bar-fixed-bottom footer">
+      <div class="container">
+        <p>© <a href="https://github.com/GraysonRicketts">Grayson Ricketts </a><script type="text/javascript">
+          var today = new Date();
+          document.write(today.getFullYear());
+        </script></p>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>
+    <script src="js/first-main.js"></script>
+  </body>
+</html>
